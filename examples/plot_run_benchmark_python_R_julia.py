@@ -10,13 +10,13 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 from benchopt import run_benchmark
 from benchopt.viz import plot_benchmark
-
+from benchopt.benchmark import Benchmark
 
 BENCHMARK_PATH = Path(os.getcwd()).parent / 'benchmarks' / 'lasso'
 
 try:
     df = run_benchmark(
-        str(BENCHMARK_PATH),
+        Benchmark(BENCHMARK_PATH),
         ['Python-PGD*use_acceleration=False', 'R-PGD', 'Julia-PGD'],
         dataset_names=['Simulated*n_samples=100,n_features=500*'],
         objective_filters=['reg=0.5'],
